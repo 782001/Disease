@@ -48,6 +48,9 @@ dev_dependencies:
   conditional_builder_null_safety: ^0.0.6
   hexcolor: ^2.0.6
   shared_preferences: ^2.0.15
+  url_launcher: ^6.1.7
+  maps_launcher: ^2.0.1
+
 #  fireBase
   firebase_core: ^2.4.0
   firebase_auth: ^4.0.1

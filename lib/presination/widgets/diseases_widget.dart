@@ -10,13 +10,20 @@ class DiseasesWidget extends StatelessWidget {
   const DiseasesWidget({
     super.key,
     required this.diseasesModel,
+    required this.TouchIndex,
   });
   final HomeDiseasesModel diseasesModel;
+  final int TouchIndex;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        NavTo(context, Diseases2(diseasModel: diseasesModel));
+        NavTo(
+            context,
+            Diseases2(
+              diseasModel: diseasesModel,
+              TouchIndex: TouchIndex,
+            ));
       },
       child: Padding(
         padding: const EdgeInsets.all(20.0),
