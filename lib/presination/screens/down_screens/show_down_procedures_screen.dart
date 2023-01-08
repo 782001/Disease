@@ -25,33 +25,38 @@ class ShowDownProceduresScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${downproceduresModel!.downProcedures!.first.proText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                    ],
-                  ),
+                child: ListView.builder(
+                  itemBuilder: (context, index) => DownProWidget(
+                      downproceduresModel!.downProcedures![index]),
+                  itemCount: downproceduresModel!.downProcedures!.length,
                 ),
               ));
         });
+  }
+
+  Widget DownProWidget(DownProcedures? proceduresModel) {
+    return Column(
+      children: [
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: CustomText(
+            text: "${proceduresModel!.proText1!}",
+            color: AppColors.black,
+            fontWeight: FontWeight.bold,
+            size: 15.sp,
+            maxLines: 10,
+            textOverflow: TextOverflow.ellipsis,
+          ),
+        ),
+        SizedBox(
+          height: 5.h,
+        ),
+        Container(
+          width: double.infinity,
+          height: 2,
+          color: AppColors.BGreyIconColor,
+        ),
+      ],
+    );
   }
 }

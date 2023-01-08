@@ -26,102 +26,41 @@ class ShowRetCommunicationDataScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retcomuncationModel!.retCommunication!.first.comuText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retcomuncationModel!.retCommunication!.first.comuText2}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retcomuncationModel!.retCommunication!.first.comuText3}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retcomuncationModel!.retCommunication!.first.comuText4}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                    ],
-                  ),
+                child: ListView.builder(
+                  itemBuilder: (context, index) => RetComuncationWidget(
+                      retcomuncationModel!.retCommunication![index]),
+                  itemCount: retcomuncationModel!.retCommunication!.length,
                 ),
               ));
         });
+  }
+
+  Widget RetComuncationWidget(RetCommunication? retcomuncationModel) {
+    return Column(
+      children: [
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: CustomText(
+            text: "${retcomuncationModel!.comuText1!}",
+            color: AppColors.black,
+            fontWeight: FontWeight.bold,
+            size: 15.sp,
+            maxLines: 10,
+            textOverflow: TextOverflow.ellipsis,
+          ),
+        ),
+        SizedBox(
+          height: 5.h,
+        ),
+        Container(
+          width: double.infinity,
+          height: 2,
+          color: AppColors.BGreyIconColor,
+        ),
+        SizedBox(
+          height: 5.h,
+        ),
+      ],
+    );
   }
 }

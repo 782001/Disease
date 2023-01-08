@@ -45,20 +45,21 @@ class Diseases2 extends StatelessWidget {
         DownData? downmarakezModel = AppCubit.get(context).downModel?.downData;
         DownData? downproceduresModel =
             AppCubit.get(context).downModel?.downData;
-        DownData? downsympots_photo_Model =
-            AppCubit.get(context).downModel?.downData;
+        DownData? downsympots_Model = AppCubit.get(context).downModel?.downData;
+        DownData? down_photo_Model = AppCubit.get(context).downModel?.downData;
         WestData? westcomuncationModel =
             AppCubit.get(context).westModel?.westData;
         WestData? westmarakezModel = AppCubit.get(context).westModel?.westData;
+
         WestData? westproceduresModel =
             AppCubit.get(context).westModel?.westData;
-        WestData? westsympots_photo_Model =
-            AppCubit.get(context).westModel?.westData;
+        WestData? west_photo_Model = AppCubit.get(context).westModel?.westData;
+        WestData? westsympots_Model = AppCubit.get(context).westModel?.westData;
         RetData? retcomuncationModel = AppCubit.get(context).retModel?.retData;
         RetData? retmarakezModel = AppCubit.get(context).retModel?.retData;
         RetData? retproceduresModel = AppCubit.get(context).retModel?.retData;
-        RetData? retsympots_photo_Model =
-            AppCubit.get(context).retModel?.retData;
+        RetData? retsympots_Model = AppCubit.get(context).retModel?.retData;
+        RetData? ret_photo_Model = AppCubit.get(context).retModel?.retData;
         return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -137,22 +138,22 @@ class Diseases2 extends StatelessWidget {
                             NavTo(
                                 context,
                                 ShowDownSymptomsDataScreen(
-                                  downsymptoms_photoModel:
-                                      downsympots_photo_Model,
+                                  downsymptoms: downsympots_Model,
+                                  photoModel: down_photo_Model,
                                 ));
                           } else if (TouchIndex == 2) {
                             NavTo(
                                 context,
                                 ShowWestSymptomsDataScreen(
-                                  westsymptoms_photoModel:
-                                      westsympots_photo_Model,
+                                  westphotoModel: west_photo_Model,
+                                  westsymptoms: westsympots_Model,
                                 ));
                           } else {
                             NavTo(
                                 context,
                                 ShowRetSymptomsDataScreen(
-                                  retsymptoms_photoModel:
-                                      retsympots_photo_Model,
+                                  retphotoModel: ret_photo_Model,
+                                  retsymptoms: retsympots_Model,
                                 ));
                           }
                           print(TouchIndex);
@@ -257,6 +258,7 @@ class Diseases2 extends StatelessWidget {
                                 context,
                                 ShowWestMarakezScreens(
                                   westmarakezModel: westmarakezModel,
+                                  // westmarakez: null,
                                 ));
                           } else {
                             NavTo(

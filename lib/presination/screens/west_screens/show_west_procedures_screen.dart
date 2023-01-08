@@ -26,39 +26,15 @@ class ShowWestProceduresScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                child: ListView.separated(
+                  itemBuilder: (context, index) => WestProWidget(
+                    westproceduresModel!.westProcedures![index],
+                  ),
+                  itemCount: westproceduresModel!.westProcedures!.length,
+                  separatorBuilder: (BuildContext context, int index) => Column(
                     children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proTitle1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 18.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
                       SizedBox(
-                        height: 3.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3.h,
+                        height: 5.h,
                       ),
                       Container(
                         width: double.infinity,
@@ -66,119 +42,26 @@ class ShowWestProceduresScreen extends StatelessWidget {
                         color: AppColors.BGreyIconColor,
                       ),
                       SizedBox(
-                        height: 3.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proText2}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proTitle2}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 20.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proText3}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proText4}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westproceduresModel!.westProcedures!.first.proText5}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 3.h,
+                        height: 5.h,
                       ),
                     ],
                   ),
                 ),
               ));
         });
+  }
+
+  Directionality WestProWidget(WestProcedures? westproceduresModel) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: CustomText(
+        text: "${westproceduresModel!.proText1}",
+        color: AppColors.black,
+        fontWeight: FontWeight.bold,
+        size: 15.sp,
+        maxLines: 10,
+        textOverflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }

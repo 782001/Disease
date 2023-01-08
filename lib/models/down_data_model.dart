@@ -142,53 +142,32 @@ class DownData {
 
 class DownCommunication {
   String? comuText1;
-  String? comuText2;
-  String? comuText3;
-  String? comuText4;
 
   DownCommunication.fromJson(Map<String, dynamic> json) {
     comuText1 = json['comu_text1'];
-    comuText2 = json['comu_text2'];
-    comuText3 = json['comu_text3'];
-    comuText4 = json['comu_text4'];
   }
 }
 
 class DownMarakez {
   String? maraLocation;
   String? mara_loc1;
-  String? mara_loc2;
+
   String? maraTitle;
   String? maraPhone;
 
-  String? maraLocation2;
-  String? maraTitle2;
-  String? maraPhone2;
-
   DownMarakez.fromJson(Map<String, dynamic> json) {
     mara_loc1 = json['mara_loc1'];
-    mara_loc2 = json['mara_loc2'];
     maraLocation = json['mara_location'];
     maraTitle = json['mara_title'];
     maraPhone = json['mara_phone'];
-
-    maraLocation2 = json['mara_location2'];
-    maraTitle2 = json['mara_title2'];
-    maraPhone2 = json['mara_phone2'];
   }
 }
 
 class DownPhoto {
   String? photo1;
-  String? photo2;
-  String? photo3;
-  String? photo4;
 
   DownPhoto.fromJson(Map<String, dynamic> json) {
     photo1 = json['photo1'];
-    photo2 = json['photo2'];
-    photo3 = json['photo3'];
-    photo4 = json['photo4'];
   }
 }
 

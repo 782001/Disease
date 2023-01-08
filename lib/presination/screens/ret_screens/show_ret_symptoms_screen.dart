@@ -12,9 +12,11 @@ import '../../controller/app_states.dart';
 class ShowRetSymptomsDataScreen extends StatelessWidget {
   const ShowRetSymptomsDataScreen({
     Key? key,
-    required this.retsymptoms_photoModel,
+    required this.retsymptoms,
+    required this.retphotoModel,
   }) : super(key: key);
-  final RetData? retsymptoms_photoModel;
+  final RetData? retsymptoms;
+  final RetData? retphotoModel;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
@@ -26,227 +28,90 @@ class ShowRetSymptomsDataScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: ListView.separated(
+                        // physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) =>
+                            RetSymotoWidget(retsymptoms!.retSymptoms![index]),
+                        itemCount: retsymptoms!.retSymptoms!.length,
+                        separatorBuilder: (BuildContext context, int index) =>
+                            Column(
+                          children: [
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 2,
+                              color: AppColors.BGreyIconColor,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 5.h,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: ListView.builder(
+                        // physics: const NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) =>
+                            RetPhotoWidget(retphotoModel!.retPhoto![index]),
+                        itemCount: retphotoModel!.retPhoto!.length,
+                        // separatorBuilder: (BuildContext context, int index) =>
+                        //     //     Column(
+                        //     //   children: [
+                        //     //     SizedBox(
+                        //     //       height: 5.h,
+                        //     //     ),
+                        //     //     Container(
+                        //     //       width: double.infinity,
+                        //     //       height: 2,
+                        //     //       color: AppColors.BGreyIconColor,
+                        //     //     ),
+                        //     //     SizedBox(
+                        //     //       height: 5.h,
+                        //     //     ),
+                        //     //   ],
+                        //     // ),
+
+                        //     Container()
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText2}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText3}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText4}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText5}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText6}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText7}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${retsymptoms_photoModel!.retSymptoms!.first.symText8}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${retsymptoms_photoModel!.retPhoto!.first.photo1}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${retsymptoms_photoModel!.retPhoto!.first.photo2}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ));
         });
+  }
+
+  Widget RetPhotoWidget(RetPhoto? retphotoModel) {
+    return SizedBox(
+      width: 90.w,
+      height: 60.h,
+      child: Image(
+          fit: BoxFit.contain,
+          image: NetworkImage(
+            "${retphotoModel!.photo1}",
+          )),
+    );
+  }
+
+  Widget RetSymotoWidget(RetSymptoms? retsymptomsModel) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: CustomText(
+        text: "${retsymptomsModel!.symText1}",
+        color: AppColors.black,
+        fontWeight: FontWeight.bold,
+        size: 15.sp,
+        maxLines: 10,
+        textOverflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }

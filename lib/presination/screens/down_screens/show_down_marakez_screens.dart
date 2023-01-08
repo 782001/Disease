@@ -18,12 +18,9 @@ class ShowDownMarakezScreens extends StatelessWidget {
   final DownData? downmarakezModel;
   @override
   Widget build(BuildContext context) {
-    final Uri _url1 = Uri.parse(
-      "${downmarakezModel!.downMarakez!.first.mara_loc1!}",
-    );
-    final Uri _url2 = Uri.parse(
-      "${downmarakezModel!.downMarakez!.first.mara_loc2!}",
-    );
+    // final Uri _url2 = Uri.parse(
+    //   "${downmarakezModel!.downMarakez!.first.mara_loc2!}",
+    // );
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -33,185 +30,102 @@ class ShowDownMarakezScreens extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: AppColors.greyLight,
-                          ),
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                    text:
-                                        "${downmarakezModel!.downMarakez!.first.maraTitle!}",
-                                    color: AppColors.black,
-                                    fontWeight: FontWeight.bold,
-                                    size: 15.sp,
-                                    maxLines: 10,
-                                    textOverflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  CustomText(
-                                    text:
-                                        "رقم الهاتف:   ${downmarakezModel!.downMarakez!.first.maraPhone!}",
-                                    color: AppColors.black,
-                                    fontWeight: FontWeight.bold,
-                                    size: 15.sp,
-                                    maxLines: 10,
-                                    textOverflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  CustomText(
-                                    text:
-                                        "العنوان:    ${downmarakezModel!.downMarakez!.first.maraLocation!}",
-                                    color: AppColors.black,
-                                    fontWeight: FontWeight.bold,
-                                    size: 15.sp,
-                                    maxLines: 10,
-                                    textOverflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 6.5.h,
-                                    color: DefaultColor,
-                                    child: MaterialButton(
-                                      onPressed: () {
-                                        // MapsLauncher.launchCoordinates(
-                                        //     30.069027704643347, 31.2801226846589
-                                        //     // downmarakezModel!
-                                        //     //     .marakez!.first.maralat1!,
-                                        //     // downmarakezModel!
-                                        //     //     .marakez!.first.maralong1!
-                                        //     );
-                                        // MapsLauncher.launchCoordinates(
-                                        //     37.4220041,
-                                        //     -122.0862462,
-                                        //     'Google Headquarters are here');
-                                        GoLocation(_url1);
-                                      },
-                                      child: const Text(
-                                        'اذهب للموقع',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: AppColors.greyLight,
-                          ),
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                    text:
-                                        "${downmarakezModel!.downMarakez!.first.maraTitle2!}",
-                                    color: AppColors.black,
-                                    fontWeight: FontWeight.bold,
-                                    size: 15.sp,
-                                    maxLines: 10,
-                                    textOverflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  CustomText(
-                                    text:
-                                        "رقم الهاتف:   ${downmarakezModel!.downMarakez!.first.maraPhone2!}",
-                                    color: AppColors.black,
-                                    fontWeight: FontWeight.bold,
-                                    size: 15.sp,
-                                    maxLines: 10,
-                                    textOverflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  CustomText(
-                                    text:
-                                        "العنوان:    ${downmarakezModel!.downMarakez!.first.maraLocation2!}",
-                                    color: AppColors.black,
-                                    fontWeight: FontWeight.bold,
-                                    size: 15.sp,
-                                    maxLines: 10,
-                                    textOverflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 6.5.h,
-                                    color: DefaultColor,
-                                    child: MaterialButton(
-                                      onPressed: () {
-                                        // MapsLauncher.launchCoordinates(
-                                        //     // 31.3783735, 30.098829298540384
-                                        //     // 31.3783735
-                                        //     downmarakezModel!
-                                        //             .marakez!.first.maralat2! ,
-                                        //     downmarakezModel!
-                                        //         .marakez!.first.maralong2!);
-                                        GoLocation(_url2);
-                                      },
-                                      child: const Text(
-                                        'اذهب للموقع',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ))
-                    ],
-                  ),
+                child: ListView.separated(
+                  itemBuilder: (BuildContext context, int index) =>
+                      marakezW(downmarakezModel!.downMarakez![index]),
+                  itemCount: downmarakezModel!.downMarakez!.length,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 5.h,
+                    );
+                  },
                 ),
               ));
         });
+  }
+
+  Widget marakezW(DownMarakez? MarakezModel) {
+    return Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          color: AppColors.greyLight,
+        ),
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  text: "${MarakezModel!.maraTitle!}",
+                  color: AppColors.black,
+                  fontWeight: FontWeight.bold,
+                  size: 15.sp,
+                  maxLines: 10,
+                  textOverflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(
+                  height: 3.h,
+                ),
+                CustomText(
+                  text: "رقم الهاتف:   ${MarakezModel.maraPhone!}",
+                  color: AppColors.black,
+                  fontWeight: FontWeight.bold,
+                  size: 15.sp,
+                  maxLines: 10,
+                  textOverflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(
+                  height: 3.h,
+                ),
+                CustomText(
+                  text: "العنوان:    ${MarakezModel.maraLocation!}",
+                  color: AppColors.black,
+                  fontWeight: FontWeight.bold,
+                  size: 15.sp,
+                  maxLines: 10,
+                  textOverflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(
+                  height: 3.h,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 6.5.h,
+                  color: DefaultColor,
+                  child: MaterialButton(
+                    onPressed: () {
+                      // MapsLauncher.launchCoordinates(
+                      //     30.069027704643347, 31.2801226846589
+                      //     // downmarakezModel!
+                      //     //     .marakez!.first.maralat1!,
+                      //     // downmarakezModel!
+                      //     //     .marakez!.first.maralong1!
+                      //     );
+                      // MapsLauncher.launchCoordinates(
+                      //     37.4220041,
+                      //     -122.0862462,
+                      //     'Google Headquarters are here');
+                      GoLocation(Uri.parse(
+                        "${MarakezModel.mara_loc1!}",
+                      ));
+                    },
+                    child: const Text(
+                      'اذهب للموقع',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 
   Future<void> GoLocation(_urlL) async {

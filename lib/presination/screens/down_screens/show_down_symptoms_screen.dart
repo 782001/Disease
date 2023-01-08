@@ -9,11 +9,13 @@ import '../../controller/app_cubit.dart';
 import '../../controller/app_states.dart';
 
 class ShowDownSymptomsDataScreen extends StatelessWidget {
-  const ShowDownSymptomsDataScreen({
+  ShowDownSymptomsDataScreen({
     Key? key,
-    required this.downsymptoms_photoModel,
+    required this.downsymptoms,
+    required this.photoModel,
   }) : super(key: key);
-  final DownData? downsymptoms_photoModel;
+  final DownData? downsymptoms;
+  final DownData? photoModel;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
@@ -25,101 +27,70 @@ class ShowDownSymptomsDataScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${downsymptoms_photoModel!.downSymptoms!.first.symText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: ListView.separated(
+                        itemBuilder: (context, index) =>
+                            DownSymptoWid(downsymptoms!.downSymptoms![index]),
+                        itemCount: downsymptoms!.downSymptoms!.length,
+                        separatorBuilder: (BuildContext context, int index) =>
+                            Column(
+                          children: [
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 2,
+                              color: AppColors.BGreyIconColor,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 5.h,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) =>
+                            DownPhotoWidget(photoModel!.downPhoto![index]),
+                        itemCount: photoModel!.downPhoto!.length,
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${downsymptoms_photoModel!.downPhoto!.first.photo1}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${downsymptoms_photoModel!.downPhoto!.first.photo2}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${downsymptoms_photoModel!.downPhoto!.first.photo3}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${downsymptoms_photoModel!.downPhoto!.first.photo4}",
-                            )),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ));
         });
+  }
+
+  Widget DownPhotoWidget(DownPhoto? downphotoModel) {
+    return SizedBox(
+      width: 90.w,
+      height: 60.h,
+      child: Image(
+          fit: BoxFit.contain,
+          image: NetworkImage(
+            "${downphotoModel!.photo1}",
+          )),
+    );
+  }
+
+  Widget DownSymptoWid(DownSymptoms? downsymptomsModel) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: CustomText(
+        text: "${downsymptomsModel!.symText1}",
+        color: AppColors.black,
+        fontWeight: FontWeight.bold,
+        size: 15.sp,
+        maxLines: 10,
+        textOverflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }

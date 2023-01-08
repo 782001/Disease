@@ -12,9 +12,11 @@ import '../../controller/app_states.dart';
 class ShowWestSymptomsDataScreen extends StatelessWidget {
   const ShowWestSymptomsDataScreen({
     Key? key,
-    required this.westsymptoms_photoModel,
+    required this.westsymptoms,
+    required this.westphotoModel,
   }) : super(key: key);
-  final WestData? westsymptoms_photoModel;
+  final WestData? westsymptoms;
+  final WestData? westphotoModel;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
@@ -26,165 +28,70 @@ class ShowWestSymptomsDataScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westsymptoms_photoModel!.westSymptoms!.first.symText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: ListView.separated(
+                        itemBuilder: (context, index) => WestSymotoWidget(
+                            westsymptoms!.westSymptoms![index]),
+                        itemCount: westsymptoms!.westSymptoms!.length,
+                        separatorBuilder: (BuildContext context, int index) =>
+                            Column(
+                          children: [
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 2,
+                              color: AppColors.BGreyIconColor,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 5.h,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) =>
+                            WestPhotoWidget(westphotoModel!.westPhoto![index]),
+                        itemCount: westphotoModel!.westPhoto!.length,
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westsymptoms_photoModel!.westSymptoms!.first.symText2}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westsymptoms_photoModel!.westSymptoms!.first.symText3}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westsymptoms_photoModel!.westSymptoms!.first.symText4}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westsymptoms_photoModel!.westSymptoms!.first.symText5}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${westsymptoms_photoModel!.westPhoto!.first.photo1}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${westsymptoms_photoModel!.westPhoto!.first.photo2}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Image(
-                            fit: BoxFit.contain,
-                            image: NetworkImage(
-                              "${westsymptoms_photoModel!.westPhoto!.first.photo3}",
-                            )),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ));
         });
+  }
+
+  Widget WestPhotoWidget(WestPhoto? westphotoModel) {
+    return SizedBox(
+      width: 90.w,
+      height: 60.h,
+      child: Image(
+          fit: BoxFit.contain,
+          image: NetworkImage(
+            "${westphotoModel!.photo1}",
+          )),
+    );
+  }
+
+  Widget WestSymotoWidget(WestSymptoms? westsymptomsModel) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: CustomText(
+        text: "${westsymptomsModel!.symText1}",
+        color: AppColors.black,
+        fontWeight: FontWeight.bold,
+        size: 15.sp,
+        maxLines: 10,
+        textOverflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }

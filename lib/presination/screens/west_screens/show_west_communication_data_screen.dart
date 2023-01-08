@@ -25,44 +25,12 @@ class ShowWestCommunicationDataScreen extends StatelessWidget {
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
+                child: ListView.separated(
+                  itemBuilder: (context, index) => WestCommWidget(
+                      westcomuncationModel!.westCommunication![index]),
+                  itemCount: westcomuncationModel!.westCommunication!.length,
+                  separatorBuilder: (BuildContext context, int index) => Column(
                     children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westcomuncationModel!.westCommunication!.first.comuText1}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 2,
-                        color: AppColors.BGreyIconColor,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: CustomText(
-                          text:
-                              "${westcomuncationModel!.westCommunication!.first.comuText2}",
-                          color: AppColors.black,
-                          fontWeight: FontWeight.bold,
-                          size: 15.sp,
-                          maxLines: 10,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
-                      ),
                       SizedBox(
                         height: 5.h,
                       ),
@@ -79,5 +47,19 @@ class ShowWestCommunicationDataScreen extends StatelessWidget {
                 ),
               ));
         });
+  }
+
+  Directionality WestCommWidget(WestCommunication? westComModel) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: CustomText(
+        text: "${westComModel!.comuText1}",
+        color: AppColors.black,
+        fontWeight: FontWeight.bold,
+        size: 15.sp,
+        maxLines: 10,
+        textOverflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }
